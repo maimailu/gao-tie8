@@ -672,6 +672,11 @@
       </section>
     </div>
 
+
+    <!-- ========================================
+       預約表單送出後的成功訊息，彈跳視窗
+  ========================================= -->
+
     <div class="success-modal" id="successModal" aria-hidden="true">
       <section class="success-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="successModalTitle"
         aria-describedby="successModalMessage">
@@ -683,81 +688,123 @@
     </div>
 
 
+    <!-- JavaScript（JS） 程式碼，專門處理網頁上 「隱私權條款彈出視窗（Privacy Modal）」 與 
+     「成功/送出成功彈出視窗（Success Modal）」 的互動與表單驗證 -->
+
     <script>
+      // ==========================================
+      // 1. DOM 元素選取 (DOM Elements Selection)
+      // ==========================================
+      // 隱私權彈窗相關元素
       const privacyModal = document.getElementById('privacyModal');
       const privacyTrigger = document.querySelector('[data-open-privacy]');
       const privacyCloseButtons = privacyModal.querySelectorAll('.privacy-modal-close');
       const privacyConsent = document.getElementById('privacyConsent');
       let focusBeforePrivacyModal;
+
+      // 成功提示彈窗相關元素
       const successModal = document.getElementById('successModal');
       const successModalCloseButtons = successModal.querySelectorAll('.success-modal-close, .success-modal-confirm');
       let focusBeforeSuccessModal;
 
+
+      // ==========================================
+      // 2. 隱私權彈窗邏輯 (Privacy Modal Logic)
+      // ==========================================
+      /**
+       * 關閉隱私權彈窗並還原焦點
+       */
       function closePrivacyModal() {
         privacyModal.classList.remove('is-open');
         privacyModal.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('privacy-modal-open');
+
+        // 將焦點還原至開啟彈窗前所點擊的元件
         if (focusBeforePrivacyModal) {
           focusBeforePrivacyModal.focus();
         }
       }
 
+      // 點擊觸發按鈕：開啟隱私權彈窗
       privacyTrigger.addEventListener('click', function () {
-        focusBeforePrivacyModal = document.activeElement;
+        focusBeforePrivacyModal = document.activeElement; // 記錄目前的焦點位置
         privacyModal.classList.add('is-open');
         privacyModal.setAttribute('aria-hidden', 'false');
         document.body.classList.add('privacy-modal-open');
-        privacyCloseButtons[0].focus();
+        privacyCloseButtons[0].focus(); // 將焦點移至彈窗內第一個關閉按鈕
       });
 
+      // 點擊關閉按鈕：關閉隱私權彈窗
       privacyCloseButtons.forEach(function (button) {
         button.addEventListener('click', closePrivacyModal);
       });
 
+      // 點擊背景遮罩：關閉隱私權彈窗
       privacyModal.addEventListener('click', function (event) {
         if (event.target === privacyModal) {
           closePrivacyModal();
         }
       });
 
+      // 按下 Esc 鍵：關閉隱私權彈窗
       document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape' && privacyModal.classList.contains('is-open')) {
           closePrivacyModal();
         }
       });
 
+
+      // ==========================================
+      // 3. 成功提示彈窗邏輯 (Success Modal Logic)
+      // ==========================================
+      /**
+       * 關閉成功提示彈窗並還原焦點
+       */
       function closeSuccessModal() {
         successModal.classList.remove('is-open');
         successModal.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('success-modal-open');
+
+        // 將焦點還原至開啟彈窗前所點擊的元件
         if (focusBeforeSuccessModal) {
           focusBeforeSuccessModal.focus();
         }
       }
 
+      // 點擊關閉/確認按鈕：關閉成功提示彈窗
       successModalCloseButtons.forEach(function (button) {
         button.addEventListener('click', closeSuccessModal);
       });
 
+      // 點擊背景遮罩：關閉成功提示彈窗
       successModal.addEventListener('click', function (event) {
         if (event.target === successModal) {
           closeSuccessModal();
         }
       });
 
+      // 按下 Esc 鍵：關閉成功提示彈窗
       document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape' && successModal.classList.contains('is-open')) {
           closeSuccessModal();
         }
       });
 
+
+      // ==========================================
+      // 4. 表單驗證與提示訊息 (Form Validation & Messages)
+      // ==========================================
+      // 當同意勾選框未通過驗證時，設定自訂錯誤提示文字
       privacyConsent.addEventListener('invalid', function () {
         this.setCustomValidity(this.dataset.validationRequiredMessage);
       });
+
+      // 當同意勾選框狀態改變時，清除錯誤提示
       privacyConsent.addEventListener('change', function () {
         this.setCustomValidity('');
       });
     </script>
+
 
     <!-- 新增送信的程式碼START -->
     <script>
@@ -808,7 +855,7 @@
         //  設定 A: 寄信 API 資料
         // ==========================================
         const mailTo =
-          'maizizi@gmail.com';
+          'maizizi@gmail.com,xiaozhu0258@gmail.com';
         const mailSubject = '【高鐵綻8期】網站預約表單';
         const mailText =
           `姓名：${name}\n性別：${gender}\n電話：${phone}\n信箱：${email}\n縣市：${city}\n鄉鎮區：${town}\n個資聲明：${formData.get('privacyConsent') === 'yes' ? '本人已悉知' : '未勾選'}`;
