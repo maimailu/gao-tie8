@@ -1,0 +1,1650 @@
+:root {
+    --ink: #145e61;
+    --teal: #40adc0;
+    --pale: #eef8f5;
+    --paper: #fbfcf7;
+    --yellow: #f7df38;
+    --line: #d8e6df;
+    --muted: #5f7773;
+
+    color-scheme: light;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        "Noto Serif TC",
+        serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.site-shell {
+    overflow: hidden;
+}
+
+.wow {
+    animation-play-state: paused;
+}
+
+.wow.wow-animated {
+    animation-play-state: running;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .wow,
+    .wow.wow-animated {
+        animation: none !important;
+        visibility: visible !important;
+    }
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.topbar {
+    position: absolute;
+
+    z-index: 10;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    max-width: 1360px;
+
+    margin: auto;
+
+    padding:
+        28px 5vw;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    color: #fff;
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* Logo 圖片 */
+
+.brand {
+    display: block;
+}
+
+.brand img {
+    display: block;
+
+    width: min(360px, 32vw);
+
+    height: auto;
+}
+
+
+/* Navigation */
+
+.topbar nav {
+    display: flex;
+
+    gap: 35px;
+
+    font-size: 12px;
+
+    letter-spacing: 0.12em;
+}
+
+.topbar nav a {
+    transition: color 0.25s ease;
+}
+
+.topbar nav a:hover {
+    color: var(--yellow);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.header {
+    position: absolute;
+    z-index: 10;
+    top: 48px;
+    left: 10vw;
+    right: 10vw;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .brand img {
+    width: min(360px, 32vw);
+}
+
+.hero {
+    position: relative;
+
+    min-height: 650px;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    padding:
+        180px 10vw 100px;
+
+    background: var(--teal);
+
+    color: #fff;
+}
+
+
+/* Hero 主內容 */
+
+.hero-content {
+    min-height: 370px;
+}
+
+
+/* 左側 */
+
+.hero-left {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 58%;
+}
+
+
+/* 小標 */
+
+.hero-eyebrow {
+    margin: 0;
+
+    flex-shrink: 0;
+    text-align: right;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+    letter-spacing: 0.22em;
+}
+
+
+/* 主標圖片 */
+
+.hero-title-image {
+    width: min(660px, 100%);
+}
+
+.hero-title-image img {
+    width: 100%;
+
+    height: auto;
+}
+
+
+/* 河畔永久景觀宅 */
+
+.hero-left h2 {
+    margin:
+        25px 0 14px;
+
+    font-size:
+        clamp(25px,
+            3vw,
+            38px);
+
+    font-weight: 500;
+}
+
+
+/* Hero 內文 */
+
+.hero-description {
+    max-width: 390px;
+
+    color: #fff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    line-height: 2;
+}
+
+
+/* Hero 按鈕 */
+
+.hero-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 35px;
+
+    margin-top: 24px;
+
+    padding-bottom: 9px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.7);
+
+    color: #fff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 0.12em;
+}
+
+.hero-link span {
+    font-size: 16px;
+}
+
+
+/* 右下植物圖片 */
+
+.hero-landscape {
+    position: absolute;
+
+    z-index: 1;
+
+    right: 0;
+
+    bottom: 0;
+
+    width:
+        min(62vw,
+            760px);
+}
+
+.hero-landscape img {
+    width: 100%;
+
+    height: auto;
+}
+
+
+/* =========================================================
+   COMMON SECTION
+========================================================= */
+
+.section {
+    max-width: 1440px;
+
+    margin: auto;
+
+    padding:
+        78px max(8vw, 34px);
+}
+
+
+.eyebrow,
+.section-label {
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    letter-spacing: 0.22em;
+}
+
+
+.section-label {
+    margin-bottom: 38px;
+
+    padding-bottom: 16px;
+
+    color: #78918a;
+
+    border-bottom:
+        1px solid var(--line);
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.25fr 1fr;
+
+    gap: 12vw;
+}
+
+
+.intro h2,
+.section-heading h2,
+.homes h2,
+.contact h2 {
+    margin:
+        0 0 20px;
+
+    font-size:
+        clamp(29px,
+            3.2vw,
+            46px);
+
+    font-weight: 500;
+
+    line-height: 1.3;
+}
+
+
+.intro h2 strong {
+    font-weight: 700;
+}
+
+
+.intro p,
+.construction p,
+.contact p {
+    max-width: 560px;
+
+    color: var(--muted);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 17px;
+
+    line-height: 2;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.intro-results {
+    align-self: start;
+}
+
+.stats {
+    display: flex;
+
+    gap: 32px;
+
+    align-items: flex-start;
+
+    padding: 0 0 24px;
+
+    border-bottom: 1px dashed var(--line);
+}
+
+
+.stat-item {
+    flex: 1;
+}
+
+
+.stat-item b {
+    display: block;
+
+    color: #6f9b4a;
+
+    font-size: clamp(56px, 7vw, 80px);
+
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+
+.stat-item sup {
+    font-size: 0.45em;
+}
+
+
+.stat-item span {
+    color: var(--muted);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 17px;
+}
+
+.intro-results>p {
+    margin: 24px 0 0;
+
+    color: var(--muted);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 17px;
+
+    line-height: 2;
+}
+
+
+/* =========================================================
+   FEATURE GRID
+========================================================= */
+
+.feature-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-top: 45px;
+}
+
+
+.feature-grid article {
+    min-height: 125px;
+
+    padding: 21px;
+
+    background: #fff;
+}
+
+
+.feature-grid span {
+    color: #8da85c;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+}
+
+
+.feature-grid h3 {
+    margin:
+        9px 0 8px;
+
+    font-size: 17px;
+}
+
+
+.feature-grid p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects {
+    max-width: none;
+
+    padding-left:
+        max(8vw, 34px);
+
+    padding-right:
+        max(8vw, 34px);
+
+    background: var(--pale);
+}
+
+
+.projects>* {
+    max-width: 1280px;
+
+    margin-left: auto;
+
+    margin-right: auto;
+}
+
+
+.section-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    margin-bottom: 32px;
+}
+
+
+.section-heading h2 {
+    font-size: 28px;
+}
+
+
+.section-heading p {
+    color: var(--muted);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+}
+
+.project-distance {
+    flex: 0 0 28%;
+}
+
+.project-distance>b {
+    display: block;
+
+    color: #6f9b4a;
+
+    font-size: 22px;
+
+    font-weight: 500;
+
+    line-height: 1.4;
+}
+
+.section-heading .project-distance p {
+    margin: 4px 0 0;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   PROJECT GRID
+========================================================= */
+
+.project-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+
+.project-card {
+    background: #fff;
+}
+
+
+.project-card img {
+    width: 100%;
+
+    aspect-ratio: 1.55;
+
+    object-fit: cover;
+}
+
+
+.project-card div {
+    padding:
+        15px 16px 18px;
+}
+
+
+.project-card span,
+.project-card p {
+    color: #6b9274;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+}
+
+
+.project-card h3 {
+    margin:
+        8px 0 4px;
+
+    font-size: 18px;
+
+    font-weight: 600;
+}
+
+
+.project-card p {
+    margin: 0;
+
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   PANORAMA
+========================================================= */
+
+.panorama {
+    min-height: 0;
+
+    padding:
+        32px max(7vw, 34px) 42px;
+
+    color: var(--ink);
+
+    background: var(--paper);
+}
+
+.panorama-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.panorama-meta .section-label {
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+}
+
+.panorama-eyebrow {
+    margin: 0;
+
+    color: var(--ink);
+
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+}
+
+.panorama-meta .panorama-eyebrow {
+    margin-left: auto;
+    text-align: right;
+
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+.panorama-title {
+    margin: 0;
+
+    font-size: clamp(28px, 3.2vw, 38px);
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+
+
+/*手機手指圖設定*/
+.s-block-view-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    vertical-align: middle;
+    transform: translateX(-50%);
+    width: 10rem;
+    height: 10rem;
+    text-align: center;
+    line-height: 1.5;
+    background-color: #222;
+    border-radius: 5px;
+    overflow: hidden;
+    color: #fff;
+    font-size: 6vh;
+    opacity: .8;
+    z-index: 3;
+    animation: slideInLeft 2s linear infinite alternate;
+    --animate-repeat: 2;
+    display: none;
+}
+
+
+
+.s-block-view-btn p {
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff !important;
+}
+
+.s-block-view-btn p span {
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 8px auto 10px auto;
+    background: url(./img/swipe.svg) no-repeat;
+}
+
+
+/*空拍滑動設定*/
+.scrolling-wrapper,
+.scrolling-wrapper-flexbox {
+    height: 50%;
+    margin-bottom: 0px;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+/*空拍滾動條隱藏*/
+.scrolling-wrapper {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+/*空拍手機版隱藏*/
+.iphone-env {
+    display: none;
+}
+
+
+.pic-relative {
+    position: relative;
+}
+
+/* 空拍加入圖說 start */
+.env-pic01 {
+    /*表示它是基準元素*/
+    position: relative;
+}
+
+
+.infoImg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    padding: 3px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.678);
+    font-size: 1.5rem;
+    z-index: 10;
+}
+
+
+/* =========================================================
+   CONSTRUCTION
+========================================================= */
+
+.construction-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.1fr 0.9fr;
+
+    gap: 45px;
+
+    align-items: start;
+}
+
+.construction-description {
+    margin: 0 0 18px;
+
+    color: var(--muted);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+
+.blueprint {
+    position: relative;
+
+    background: #fff;
+}
+
+.blueprint img {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+}
+
+
+
+
+.beam {
+    position: absolute;
+
+    z-index: 1;
+
+    top: 65px;
+
+    width: 70px;
+
+    height: 150px;
+
+    border:
+        3px solid #86a79b;
+}
+
+
+.beam-one {
+    left: 25%;
+
+    transform:
+        skewY(-15deg);
+}
+
+
+.beam-two {
+    left: 43%;
+
+    transform:
+        skewY(15deg);
+}
+
+
+.beam-three {
+    left: 60%;
+
+    transform:
+        skewY(-15deg);
+}
+
+
+.blueprint p {
+    margin: 14px 0 0;
+
+    color: var(--muted);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+}
+
+
+.construction-image img {
+    width: 100%;
+
+    aspect-ratio: 1.3;
+
+    object-fit: cover;
+}
+
+
+.construction-image h3 {
+    margin:
+        17px 0 4px;
+
+    font-size: 19px;
+}
+
+
+.quote-bar {
+    margin-top: 32px;
+
+    padding:
+        17px 22px;
+
+    background: #176d76;
+
+    color: #fff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 16px;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   HOMES
+========================================================= */
+
+.homes h2 {
+    font-size: 29px;
+}
+
+
+.home-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+
+.home-grid img {
+    width: 100%;
+
+    aspect-ratio: 1.7;
+
+    object-fit: cover;
+}
+
+
+.home-grid h3 {
+    margin:
+        12px 0;
+
+    font-size: 17px;
+
+    font-weight: 500;
+}
+
+
+.home-grid small {
+    float: right;
+
+    padding-top: 5px;
+
+    color: #88a27b;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact {
+    max-width: none;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10vw;
+
+    background: #e6f6f2;
+}
+
+
+.contact>div,
+.contact form {
+    max-width: 520px;
+}
+
+
+.contact h3 {
+    /* margin:
+        40px 0 15px; */
+
+    font-size: 25px;
+
+    font-weight: 500;
+
+    line-height: 1.55;
+}
+
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 40px;
+}
+
+.contact .contact-form-row {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.contact .contact-form-field {
+    min-width: 0;
+}
+
+
+.contact label {
+    color: var(--muted);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+}
+
+.contact .contact-form-field label {
+    display: block;
+
+    margin: 0 0 6px;
+}
+
+.contact input,
+.contact select,
+.contact textarea {
+    display: block;
+
+    width: 100%;
+
+    margin-top: 0;
+
+    padding:
+        11px 13px;
+
+    border:
+        1px solid #a9cbc5;
+
+    background: #fff;
+
+    color: var(--ink);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+}
+
+.contact input[type="hidden"] {
+    display: none;
+}
+
+
+.contact textarea {
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+
+.contact button {
+    padding: 13px;
+
+    border: 0;
+
+    background: #176d76;
+
+    color: #fff;
+
+    cursor: pointer;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 0.15em;
+}
+
+
+.contact button span {
+    float: right;
+}
+
+.contact .privacy-consent {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    color: var(--ink);
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.contact .privacy-consent input {
+    width: auto;
+    margin: 0;
+    accent-color: #176d76;
+}
+
+.contact .privacy-consent label {
+    margin: 0;
+
+    color: var(--ink);
+    font-size: 12px;
+}
+
+.contact .privacy-link {
+    margin: 0;
+    padding: 0;
+
+    background: none;
+    color: #a33c3c;
+    font-size: 12px;
+    letter-spacing: 0;
+    text-decoration: underline;
+}
+
+.contact .form-status {
+    min-height: 1.5em;
+    margin: 0;
+
+    color: var(--ink);
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+.privacy-modal {
+    position: fixed;
+    z-index: 10000;
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.58);
+}
+
+.privacy-modal.is-open {
+    display: flex;
+}
+
+.privacy-modal-dialog {
+    display: flex;
+    flex-direction: column;
+
+    width: min(760px, 100%);
+    max-height: min(82vh, 800px);
+    overflow: hidden;
+
+    background: #fff;
+    color: #333;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.24);
+}
+
+.privacy-modal-header,
+.privacy-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--line);
+}
+
+.privacy-modal-header h2 {
+    margin: 0;
+    font-size: 19px;
+}
+
+.privacy-modal .privacy-modal-close {
+    width: auto;
+    margin: 0;
+    padding: 6px 12px;
+
+    background: #176d76;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 0;
+}
+
+.privacy-modal-header .privacy-modal-close {
+    padding: 0 6px;
+    background: transparent;
+    color: var(--ink);
+    font-size: 28px;
+    line-height: 1;
+}
+
+.privacy-modal-body {
+    overflow-y: auto;
+    padding: 20px 24px;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.privacy-modal-body h4 {
+    margin: 20px 0 6px;
+    font-size: 14px;
+}
+
+.privacy-modal-body p {
+    margin: 0 0 12px;
+}
+
+.privacy-modal-footer {
+    justify-content: flex-end;
+    border-top: 1px solid var(--line);
+    border-bottom: 0;
+}
+
+body.privacy-modal-open {
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    overflow: hidden;
+
+    padding:
+        48px max(6vw, 24px) 18px;
+
+    background: var(--teal);
+
+    color: #fff;
+}
+
+.footer-visuals {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+
+    width: 100%;
+    min-height: 240px;
+}
+
+.footer-brand,
+.footer-tree {
+    display: block;
+    height: auto;
+}
+
+.footer-brand {
+    width: min(52%, 780px);
+}
+
+.footer-tree {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    width: min(36%, 850px);
+}
+
+.footer-legal {
+    width: 100%;
+    margin: 28px 0 0;
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    line-height: 1.8;
+    letter-spacing: 0.08em;
+    text-align: center;
+}
+
+.footer h2 {
+    margin:
+        0 0 8px;
+
+    font-size: 43px;
+
+    font-weight: 500;
+}
+
+
+.footer em {
+    color: var(--yellow);
+
+    font-style: normal;
+}
+
+
+.footer p {
+    font-family: 'Noto Sans TC', sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    letter-spacing: 0.1em;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero {
+        padding-left: 6vw;
+        padding-right: 6vw;
+    }
+
+    .hero-left {
+        max-width: 65%;
+    }
+
+    .hero-landscape {
+        right: -6vw;
+
+        width: 68vw;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .topbar {
+        padding:
+            20px 22px;
+    }
+
+    .brand img {
+        width:
+            min(260px,
+                65vw);
+    }
+
+    .topbar nav {
+        display: none;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        min-height: 620px;
+
+        padding:
+            150px 24px 80px;
+    }
+
+    .header {
+        top: 24px;
+        left: 24px;
+        right: 24px;
+    }
+
+    .header .brand img {
+        width: min(190px, 45vw);
+    }
+
+    .header .hero-eyebrow {
+        font-size: 8px;
+        letter-spacing: 0.12em;
+    }
+
+    .hero-content {
+        min-height: 470px;
+    }
+
+    .hero-left {
+        max-width: 100%;
+    }
+
+    .hero-title-image {
+        width: 100%;
+
+        max-width: 560px;
+    }
+
+    .hero-left h2 {
+        font-size: 24px;
+    }
+
+    .hero-description {
+        max-width: 320px;
+
+        font-size: 12px;
+    }
+
+    .hero-landscape {
+        right: -24px;
+
+        bottom: 0;
+
+        width: 88vw;
+    }
+
+
+    /* Section */
+
+    .section {
+        padding:
+            55px 24px;
+    }
+
+
+    /* Grids */
+
+    .intro-grid,
+    .construction-grid,
+    .contact {
+        grid-template-columns:
+            1fr;
+
+        gap: 35px;
+    }
+
+    .contact .contact-form-row {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+
+    .feature-grid,
+    .project-grid {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .feature-grid article {
+        min-height: 145px;
+
+        padding: 14px;
+    }
+
+
+    .stats {
+        gap: 24px;
+    }
+
+
+    .section-heading {
+        display: block;
+    }
+
+
+    .section-heading p {
+        margin-top: 12px;
+    }
+
+
+    /* Panorama */
+
+    .panorama {
+        padding:
+            28px 24px 32px;
+    }
+
+
+    .panorama-meta {
+        margin-bottom: 20px;
+        padding-bottom: 14px;
+    }
+
+    .panorama .section-label {
+        font-size: 9px;
+    }
+
+    .panorama-meta .panorama-eyebrow {
+        font-size: 7px;
+    }
+
+    .panorama-title {
+        font-size: clamp(24px, 6vw, 32px);
+    }
+
+
+    /* Homes */
+
+    .home-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    /* Footer */
+
+    .footer {
+        padding: 36px 24px 16px;
+    }
+
+    .footer-visuals {
+        position: relative;
+        align-items: flex-start;
+        min-height: 145px;
+        gap: 16px;
+    }
+
+    .footer-brand {
+        width: 80%;
+    }
+
+    .footer-tree {
+        right: 0;
+        bottom: 0;
+        width: 70%;
+    }
+
+    .footer-legal {
+        position: relative;
+        z-index: 1;
+        margin-top: 16px;
+        font-size: 9px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media screen and (max-width: 480px) {
+
+    /*空拍電腦版隱藏*/
+    .compture-env {
+        display: none;
+    }
+
+    /*空拍手機版顯示*/
+    .iphone-env {
+        display: block;
+    }
+
+
+    /*	手機版手指按鈕【顯示】圖*/
+    .s-block-view-btn {
+        display: block;
+    }
+
+
+    /*	手機空拍圖設定適合手機大小，不設定會太長*/
+    .map-bg {
+        position: relative;
+        display: block;
+        height: 60vh;
+        max-height: 60vh;
+        width: auto;
+        max-width: none;
+    }
+
+    /*	手機滾動條顯示*/
+    .scrolling-wrapper {
+        overflow-x: scroll;
+    }
+
+    /*	手機版黑色漸層圖*/
+    .overlay-cover {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        color: #fff;
+        background-color: rgba(0, 0, 0, .6);
+        text-align: center;
+        left: 0;
+        z-index: 999;
+    }
+
+    /*	手機版黑色漸層圖*/
+    .overlay-cover2 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        color: #fff;
+        background-color: rgba(0, 0, 0, .6);
+        text-align: center;
+        left: 0;
+        z-index: 999;
+    }
+
+    /*	外層比需要包一層position-relative
+就不會一直跑去外面了*/
+    .position-relative {
+        position: relative;
+    }
+
+
+
+    .infoImg {
+        font-size: 1rem;
+    }
+
+}
+
+
+@media (max-width: 430px) {
+
+    .feature-grid,
+    .project-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .hero-landscape {
+        width: 105vw;
+
+        right: -24px;
+    }
+
+}
