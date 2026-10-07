@@ -672,6 +672,16 @@
       </section>
     </div>
 
+    <div class="success-modal" id="successModal" aria-hidden="true">
+      <section class="success-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="successModalTitle"
+        aria-describedby="successModalMessage">
+        <!-- <button class="success-modal-close" type="button" aria-label="關閉">×</button> -->
+        <h2 id="successModalTitle">傳送成功</h2>
+        <p id="successModalMessage">感謝您的預約<br>我們將盡快與您聯繫</p>
+        <button class="success-modal-confirm" type="button">確定</button>
+      </section>
+    </div>
+
 
     <script>
       const privacyModal = document.getElementById('privacyModal');
@@ -679,6 +689,9 @@
       const privacyCloseButtons = privacyModal.querySelectorAll('.privacy-modal-close');
       const privacyConsent = document.getElementById('privacyConsent');
       let focusBeforePrivacyModal;
+      const successModal = document.getElementById('successModal');
+      const successModalCloseButtons = successModal.querySelectorAll('.success-modal-close, .success-modal-confirm');
+      let focusBeforeSuccessModal;
 
       function closePrivacyModal() {
         privacyModal.classList.remove('is-open');
@@ -710,6 +723,31 @@
       document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape' && privacyModal.classList.contains('is-open')) {
           closePrivacyModal();
+        }
+      });
+
+      function closeSuccessModal() {
+        successModal.classList.remove('is-open');
+        successModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('success-modal-open');
+        if (focusBeforeSuccessModal) {
+          focusBeforeSuccessModal.focus();
+        }
+      }
+
+      successModalCloseButtons.forEach(function (button) {
+        button.addEventListener('click', closeSuccessModal);
+      });
+
+      successModal.addEventListener('click', function (event) {
+        if (event.target === successModal) {
+          closeSuccessModal();
+        }
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && successModal.classList.contains('is-open')) {
+          closeSuccessModal();
         }
       });
 
@@ -828,7 +866,7 @@
           // ==========================================
           if (mailResult.status === 'rejected') {
             const sheetNote = sheetResult.status === 'fulfilled' ?
-              'Google 試算表請求已送出，但瀏覽器無法確認是否寫入。' :
+              'Google 試算表請求已送出。' :
               'Google 試算表請求也未能送出。';
             showMessage(`郵件傳送失敗：${mailResult.reason.message}\n${sheetNote}`);
             return;
@@ -848,9 +886,15 @@
           }
 
           event.target.reset();
-          showMessage(sheetResult.status === 'fulfilled' ?
-            '預約郵件已送出。Google 試算表請求也已送出，但瀏覽器無法確認是否寫入。' :
-            '預約郵件已送出，但 Google 試算表請求失敗；請聯絡管理員確認，避免重複送出。');
+          focusBeforeSuccessModal = submitBtn;
+          successModal.classList.add('is-open');
+          successModal.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('success-modal-open');
+          successModal.querySelector('.success-modal-confirm').focus();
+          // 暫時隱藏表單下方的成功提醒；需要時可取消註解。
+          // showMessage(sheetResult.status === 'fulfilled' ?
+          //   '預約郵件已送出。Google 試算表請求也已送出。' :
+          //   '預約郵件已送出，但 Google 試算表請求失敗；請聯絡管理員確認，避免重複送出。');
 
         } catch (error) {
           console.error('Error:', error);
