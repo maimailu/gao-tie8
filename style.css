@@ -547,7 +547,8 @@ img {
 
 
 .projects>* {
-    max-width: 1280px;
+    width: 100%;
+    max-width: calc(1440px - 2 * max(8vw, 34px));
 
     margin-left: auto;
 
@@ -692,6 +693,9 @@ img {
 }
 
 .panorama-meta .section-label {
+    width: 220px;
+    flex: 0 0 220px;
+
     margin: 0;
     padding: 0;
 
@@ -1000,7 +1004,10 @@ img {
 ========================================================= */
 
 .contact {
-    max-width: none;
+    position: relative;
+    isolation: isolate;
+
+    max-width: 1440px;
 
     display: grid;
 
@@ -1008,6 +1015,22 @@ img {
         1fr 1fr;
 
     gap: 10vw;
+
+    background: #e6f6f2;
+}
+
+.contact::before {
+    content: "";
+
+    position: absolute;
+    z-index: -1;
+
+    top: 0;
+    bottom: 0;
+    left: 50%;
+
+    width: 100vw;
+    transform: translateX(-50%);
 
     background: #e6f6f2;
 }
@@ -1590,6 +1613,11 @@ body.success-modal-open {
     .panorama-meta {
         margin-bottom: 20px;
         padding-bottom: 14px;
+    }
+
+    .panorama-meta .section-label {
+        width: 150px;
+        flex-basis: 150px;
     }
 
     .panorama .section-label {
