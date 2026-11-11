@@ -556,7 +556,7 @@
           <div class="contact-form-row">
             <div class="contact-form-field">
               <!-- <label for="name">貴賓姓名</label> -->
-              <input type="text" id="name" name="name" placeholder="請輸入您的姓名" required>
+              <input type="text" id="name" name="name" placeholder="請輸入您的姓名（必填）" aria-required="true" required>
             </div>
 
             <div class="contact-form-field">
@@ -571,16 +571,12 @@
 
           <div class="contact-form-field">
             <!-- <label for="phone">聯絡電話</label> -->
-            <input type="tel" id="phone" name="phone" placeholder="請輸入聯絡電話" required>
+            <input type="tel" id="phone" name="phone" placeholder="請輸入聯絡電話（必填）" aria-required="true" required>
           </div>
 
           <div class="contact-form-field">
             <!-- <label for="email">電子信箱</label> -->
             <input type="email" id="email" name="email" placeholder="請輸入電子信箱">
-          </div>
-
-          <div class="twzipcode contact-form-row" id="zipcode3">
-            <input type="hidden" data-role="zipcode">
           </div>
 
           <div class="privacy-consent">
@@ -822,31 +818,17 @@
         // ==========================================
         const formData = new FormData(event.target);
 
-        // --- 針對 twzipcode 的強力抓取邏輯 ---
-        // 先嘗試從 formData 抓，如果抓不到(例如 null)，則嘗試從 DOM 元素直接抓
-        let city = formData.get('city');
-        let town = formData.get('town');
-
-        // 如果 formData 抓不到，使用 jQuery 補救 (防止 null 錯誤)
-        if (!city && typeof $ !== "undefined") {
-          city = $('[name="city"]').val();
-        }
-        if (!town && typeof $ !== "undefined") {
-          town = $('[name="town"]').val();
-        }
-
-        // 確保變數至少是空字串，而不是 null
-        city = city || "";
-        town = town || "";
-
-        const name = formData.get('name');
-        const phone = formData.get('phone');
+        // 去掉前後空白（只打空白鍵不算有填）
+        const name = (formData.get('name') || '').trim();
+        const phone = (formData.get('phone') || '').trim();
         const gender = formData.get('gender');
-        const email = formData.get('email');
+        const email = (formData.get('email') || '').trim();
 
-        // 檢查必填
+        // 檢查必填：姓名、聯絡電話一定要填才能送出
+        // （表單上的 required 會先擋空白；這裡再擋「只輸入空白」的情況）
         if (!name || !phone) {
-          showMessage('請填寫所有必填欄位'); // 改用 Toast 顯示
+          showMessage('請填寫姓名與聯絡電話（必填）');
+          (!name ? document.getElementById('name') : document.getElementById('phone')).focus();
           resetBtn(); // 恢復按鈕
           return;
         }
@@ -856,9 +838,23 @@
         // ==========================================
         const mailTo =
           'maizizi@gmail.com,xiaozhu0258@gmail.com';
-        const mailSubject = '【高鐵綻8期】網站預約表單';
-        const mailText =
-          `姓名：${name}\n性別：${gender}\n電話：${phone}\n信箱：${email}\n縣市：${city}\n鄉鎮區：${town}\n個資聲明：${formData.get('privacyConsent') === 'yes' ? '本人已悉知' : '未勾選'}`;
+
+        // 寄給後台的信件內容（要改文字就改這一段）
+        const submitTime = new Date().toLocaleString('zh-TW', {
+          timeZone: 'Asia/Taipei',
+          hour12: false
+        });
+        const mailSubject = `【高鐵綻8期】網站預約表單－${name}`; // 主旨帶姓名，收件匣一眼就看得出是誰
+        const mailText = [
+          '高鐵綻8期官網收到新的預約',
+          '------------------------------',
+          `姓名：${name}`,
+          `性別：${gender || '（未填）'}`,
+          `電話：${phone}`,
+          `信箱：${email || '（未填）'}`,
+          `送出時間：${submitTime}（台北時間）`,
+          `個資聲明：${formData.get('privacyConsent') === 'yes' ? '本人已悉知' : '未勾選'}`
+        ].join('\n');
 
         const mailData = {
           to: mailTo,
@@ -878,8 +874,6 @@
           gender: gender,
           phone: phone,
           email: email,
-          city: city,
-          town: town,
           privacyConsent: formData.get('privacyConsent') === 'yes'
 
         };
@@ -967,36 +961,6 @@
       });
     </script>
 
-    <!-- 必要的 Library -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery-twzipcode@1.7.14/jquery.twzipcode.min.js"></script>
-
-    <!-- Twzipcode 初始化 (請放在 body 結束前) -->
-    <script>
-      jQuery(function ($) {
-        if ($('#zipcode3').length > 0) {
-          $("#zipcode3").twzipcode({
-            css: ["city form-control", "town form-control", "zipcode d-none"],
-            countyName: "city",
-            districtName: "town",
-          });
-
-          $('select[name="city"]')
-            .attr({
-              required: true,
-              'aria-label': '縣市'
-            })
-            .on('invalid', function () {
-              this.setCustomValidity('請選擇縣市');
-            })
-            .on('change', function () {
-              this.setCustomValidity('');
-            });
-          $('select[name="town"]').attr('aria-label', '鄉鎮市區');
-        }
-      });
-    </script>
-
-
     <!-- 新增送信的程式碼END -->
 
     <!--	手機版點擊消失手指-->
@@ -1046,6 +1010,9 @@
         easing: 'ease-in-out'
       });
     </script>
+
+    <!-- 首頁葉子漂落動態（要關掉：刪除下面這一行）-->
+    <script src="js/leaves.js"></script>
 
 </body>
 
