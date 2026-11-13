@@ -23,10 +23,18 @@ body {
     background: var(--paper);
     color: var(--ink);
 
+    /* 全站字重基準 500（原本預設 400 太細）；有另外指定粗細的標題不受影響 */
+    font-weight: 500;
+
+    /* 思源宋體放第一順位（數字、英文也用它，整頁同一套）；
+       後面是各系統的備援，網頁字體載入失敗時才會用到 */
     font-family:
-        Georgia,
-        "Times New Roman",
         "Noto Serif TC",
+        "Source Han Serif TC",
+        "Source Han Serif",
+        "Noto Serif CJK TC",
+        "Songti TC",
+        "PMingLiU",
         serif;
 }
 
@@ -97,7 +105,7 @@ img {
 
     color: #fff;
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 }
 
 
@@ -201,7 +209,7 @@ img {
     flex-shrink: 0;
     text-align: right;
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 11px;
 
@@ -246,7 +254,7 @@ img {
 
     color: #fff;
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 13px;
 
@@ -272,7 +280,7 @@ img {
 
     color: #fff;
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 11px;
 
@@ -344,7 +352,7 @@ img {
 
 .eyebrow,
 .section-label {
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 11px;
 
@@ -410,7 +418,7 @@ img {
 
     color: var(--muted);
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 17px;
 
@@ -451,7 +459,7 @@ img {
 
     font-size: clamp(56px, 7vw, 80px);
 
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.1;
 }
 
@@ -464,7 +472,7 @@ img {
 .stat-item span {
     color: var(--muted);
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 17px;
 }
@@ -474,7 +482,7 @@ img {
 
     color: var(--muted);
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 17px;
 
@@ -510,7 +518,7 @@ img {
 .feature-grid span {
     color: #8da85c;
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 10px;
 }
@@ -529,7 +537,7 @@ img {
 
     color: var(--muted);
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 11px;
 
@@ -583,7 +591,7 @@ img {
 .section-heading p {
     color: var(--muted);
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 11px;
 }
@@ -662,7 +670,7 @@ img {
 .project-card p {
     color: #6b9274;
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 13px;
 }
@@ -726,7 +734,7 @@ img {
 
     color: var(--ink);
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
     font-size: 9px;
     letter-spacing: 0.08em;
 }
@@ -854,7 +862,7 @@ img {
 
     color: var(--muted);
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 13px;
 
@@ -924,7 +932,7 @@ img {
 
     color: var(--muted);
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 10px;
 }
@@ -957,7 +965,7 @@ img {
 
     color: #fff;
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 16px;
 
@@ -1012,7 +1020,7 @@ img {
 
     color: #88a27b;
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 10px;
 }
@@ -1096,7 +1104,7 @@ img {
 .contact label {
     color: var(--muted);
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 10px;
 }
@@ -1126,7 +1134,7 @@ img {
 
     color: var(--ink);
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 12px;
 }
@@ -1154,7 +1162,7 @@ img {
 
     cursor: pointer;
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
 
     font-size: 11px;
 
@@ -1173,7 +1181,7 @@ img {
     gap: 8px;
 
     color: var(--ink);
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
     font-size: 12px;
 }
 
@@ -1206,7 +1214,7 @@ img {
     margin: 0;
 
     color: var(--ink);
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
     font-size: 12px;
     line-height: 1.6;
     white-space: pre-line;
@@ -1280,7 +1288,7 @@ img {
     overflow-y: auto;
     padding: 20px 24px;
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
     font-size: 13px;
     line-height: 1.8;
 }
@@ -1429,7 +1437,7 @@ body.success-modal-open {
     width: 100%;
     margin: 28px 0 0;
 
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans TC", Arial, sans-serif;
     font-size: 10px;
     line-height: 1.8;
     letter-spacing: 0.08em;
@@ -1787,4 +1795,55 @@ body.success-modal-open {
         right: -24px;
     }
 
+}
+
+/* 按鈕、表單欄位的字重跟著全站 500（瀏覽器預設不會繼承，會停在 400 顯得特別細） */
+button,
+input,
+select,
+textarea {
+    font-weight: inherit;
+}
+
+/* 各區塊（放在檔案最後面，才不會被前面同選擇器的 500 蓋掉）主標題統一粗體 700（跟「高鐵首排 × 國道樞紐」一樣）：
+   鋁模板優點、透天・大樓家的不同風景、聯絡我們的「高鐵綻8期」 */
+.section-heading h2,
+.section-heading h2 strong,
+.homes h2,
+.contact h2 {
+    font-weight: 700;
+}
+
+/* 「湖畔景觀宅」等專案卡片標題：跟上方「中科虎尾園區」特色卡片標題一樣粗（700） */
+.project-card h3,
+.project-card-content h3 {
+    font-weight: 700;
+}
+
+/* 「透天外觀」「大樓外觀」卡片標題：跟「中科虎尾園區」一樣粗（700）；
+   右邊的英文小字（TOWNHOUSE / RESIDENCE）維持原本的 500，不跟著變粗 */
+.home-grid h3 {
+    font-weight: 700;
+}
+
+.home-grid h3 small {
+    font-weight: 500;
+}
+
+/* 電腦／平板版：「03 / 河堤永久景觀宅」「新虎尾溪畔，擁抱高鐵生活圈」
+   左右邊界跟「02 / 交通與周邊機能」完全一樣（同樣的左右留白與最大寬度）。
+   手機版（寬度 700px 以下）維持原本的設定，不受影響 */
+@media (min-width: 701px) {
+    .panorama {
+        padding-left: max(8vw, 34px);
+        padding-right: max(8vw, 34px);
+    }
+
+    .panorama>* {
+        width: 100%;
+        max-width: calc(1440px - 2 * max(8vw, 34px));
+
+        margin-left: auto;
+        margin-right: auto;
+    }
 }

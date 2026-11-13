@@ -38,21 +38,13 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- Noto Serif Traditional Chinese -->
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap');
-  </style>
-  <!-- Noto Serif Traditional Chinese -->
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC');
-  </style>
-
-  <!-- 引入思源宋體與黑體增加質感 -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC%3Awght%40700&family=Noto+Sans+TC%3Awght%40300%3B400%3B700&display=swap%22 rel="
-    stylesheet">
-
-
+  <!-- 字體：思源宋體（Noto Serif TC，標題與內文）＋ 思源黑體（Noto Sans TC）
+       用網頁字體載入，iOS／安卓／電腦都會顯示同一套字，不會因手機內建字體不同而跑掉。
+       粗細 400/500/600/700 都要載入：樣式裡用到了這四種，少載入的粗細，手機會改用內建字體。 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap">
 
   <!-- Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
