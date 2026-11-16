@@ -38,21 +38,13 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- Noto Serif Traditional Chinese -->
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap');
-  </style>
-  <!-- Noto Serif Traditional Chinese -->
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC');
-  </style>
-
-  <!-- 引入思源宋體與黑體增加質感 -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC%3Awght%40700&family=Noto+Sans+TC%3Awght%40300%3B400%3B700&display=swap%22 rel="
-    stylesheet">
-
-
+  <!-- 字體：思源宋體（Noto Serif TC，標題與內文）＋ 思源黑體（Noto Sans TC）
+       用網頁字體載入，iOS／安卓／電腦都會顯示同一套字，不會因手機內建字體不同而跑掉。
+       粗細 400/500/600/700 都要載入：樣式裡用到了這四種，少載入的粗細，手機會改用內建字體。 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap">
 
   <!-- Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -201,7 +193,7 @@
             <span>文化地標</span>
             <h3>雲林縣立圖書館「耕雲圖」</h3>
             <p>
-              雲林縣立圖書館，區域內的「文化地標」。
+              雲林縣立圖書館，區域內的「文化地標」多功能縣立田徑場、農博公園、虎尾分局。
             </p>
           </article>
 
@@ -217,7 +209,7 @@
             <span>星級教育</span>
             <h3>健全多元學醫幼教</h3>
             <p>
-              公立的收費，享受貴族學校的教學品質與國際視野，從幼兒開始就贏在起跑點，讓孩子的未來，像高鐵一樣準點起飛。
+              公立的收費，享受貴族學校的教學品質與國際視野！從維多利亞幼兒園、廉使國小、光復國小、崇德國中、師大附中，到虎尾科技大學，完善的教育資源，從幼兒開始就贏在起跑點，讓孩子的未來，像高鐵一樣準點起飛。
             </p>
           </article>
 
@@ -304,12 +296,12 @@
 
           <article class="project-card wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">
 
-            <img src="pic/pic02-03.jpg" alt="星巴克">
+            <img src="pic/pic02-03.jpg" alt="虎尾分局">
 
             <div class="project-card-content">
               <!-- <span>森光日常</span> -->
-              <h3>星巴克</h3>
-              <p>生活質感與社交機能</p>
+              <h3>虎尾分局</h3>
+              <p>治安良好、出入安心</p>
             </div>
 
           </article>
@@ -380,7 +372,11 @@
         <div class="compture-env">
           <main class="scene-container">
             <!-- 電腦版用這張圖 -->
-            <img src="pic/env-pic.jpg" alt="空拍圖" class="map-bg img-width100">
+            <!-- env-glow-wrap：圖片外面包一層，光點(.env-glow)才能用「圖片的百分比」定位在高鐵綻8期的光柱上 -->
+            <div class="env-glow-wrap">
+              <img src="pic/env-pic.jpg" alt="空拍圖" class="map-bg img-width100">
+              <div class="env-glow" aria-hidden="true"></div>
+            </div>
           </main>
         </div>
 
@@ -390,7 +386,10 @@
 
               <div class="map-content">
                 <!-- 手機版用這張圖 -->
-                <img src="pic/env-pic.jpg" alt="" class="map-bg">
+                <div class="env-glow-wrap">
+                  <img src="pic/env-pic.jpg" alt="" class="map-bg">
+                  <div class="env-glow" aria-hidden="true"></div>
+                </div>
 
 
                 <div class="overlay-cover">
@@ -1013,6 +1012,7 @@
 
     <!-- 首頁葉子漂落動態（要關掉：刪除下面這一行）-->
     <script src="js/leaves.js"></script>
+    <script src="js/light-dots.js"></script>
 
 </body>
 
